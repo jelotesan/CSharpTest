@@ -1,0 +1,19 @@
+version: '3.0'
+
+services:
+  mooc.backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8030:8030"
+    depends_on:
+      - sql
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: codelytv-php_ddd_skeleton-mooc-mssql
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "Your_password123"
+      ACCEPT_EULA: "Y"
